@@ -1,16 +1,16 @@
-import logo from './logo.svg'
-import './App.css'
-import { useEffect, useState } from 'react'
-import Login from './pages/login/Login'
-import auth from './firebase/Firebase'
-import { Form, Button } from 'antd'
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import Login from "./pages/login/Login";
+import auth from "./firebase/Firebase";
+import { Form, Button } from "antd";
 
 function App() {
     const [session, setSession] = useState({
         isLogin: false,
         currentUser: null,
         errorMessage: null,
-    })
+    });
     useEffect(() => {
         const handleAuth = auth.onAuthStateChanged((user) => {
             if (user) {
@@ -18,26 +18,26 @@ function App() {
                     isLogin: true,
                     currentUser: user,
                     errorMessage: null,
-                })
+                });
             }
-        })
+        });
         return () => {
-            handleAuth()
-        }
-    }, [])
+            handleAuth();
+        };
+    }, []);
 
     const signOut = () => {
         auth.signOut().then((resp) => {
             setSession({
                 isLogin: false,
                 currentUser: null,
-            })
-        })
-    }
+            });
+        });
+    };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo)
-    }
+        console.log("Failed:", errorInfo);
+    };
 
     return (
         <div className="App">
@@ -76,7 +76,7 @@ function App() {
                 <Login setSession={setSession} />
             )}
         </div>
-    )
+    );
 }
 
-export default App
+export default App;

@@ -1,62 +1,62 @@
-import React from 'react'
-import auth from '../../firebase/Firebase'
-import { Form, Input, Button, Card } from 'antd'
+import React from "react";
+import auth from "../../firebase/Firebase";
+import { Form, Input, Button, Card } from "antd";
 
 const Login = ({ setSession }) => {
-    const [form] = Form.useForm()
+    const [form] = Form.useForm();
     const onSubmit = async (values) => {
-        console.log('onSubmit:', values)
+        console.log("onSubmit:", values);
         try {
-            const { username, password } = values
+            const { username, password } = values;
             const resp = await auth.signInWithEmailAndPassword(
                 username,
                 password
-            )
-            const { user } = resp
-            console.log('user :', user)
+            );
+            const { user } = resp;
+            console.log("user :", user);
             setSession({
                 isLogin: true,
                 currentUser: user,
-            })
+            });
         } catch (error) {
-            alert(error.message)
+            alert(error.message);
             setSession({
                 isLogin: false,
                 currentUser: null,
                 errorMessage: error.message,
-            })
+            });
         }
-    }
+    };
 
     const onSignup = () => {
         form.validateFields().then(async (values) => {
-            console.log('onSignup:', values)
+            console.log("onSignup:", values);
             try {
-                const { username, password } = values
+                const { username, password } = values;
                 const resp = await auth.createUserWithEmailAndPassword(
                     username,
                     password
-                )
-                const { user } = resp
-                console.log('user :', user)
+                );
+                const { user } = resp;
+                console.log("user :", user);
                 setSession({
                     isLogin: true,
                     currentUser: user,
-                })
+                });
             } catch (error) {
-                alert(error.message)
+                alert(error.message);
                 setSession({
                     isLogin: false,
                     currentUser: null,
                     errorMessage: error.message,
-                })
+                });
             }
-        })
-    }
+        });
+    };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo)
-    }
+        console.log("Failed:", errorInfo);
+    };
 
     return (
         <div className="form">
@@ -76,7 +76,7 @@ const Login = ({ setSession }) => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: "Please input your username!",
                             },
                         ]}
                     >
@@ -89,7 +89,7 @@ const Login = ({ setSession }) => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your password!',
+                                message: "Please input your password!",
                             },
                         ]}
                     >
@@ -112,7 +112,7 @@ const Login = ({ setSession }) => {
                 </Form>
             </Card>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
