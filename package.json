@@ -17,8 +17,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "prettier": "prettier --write {**/*.{js,jsx,ts,tsx,json,css,scss,md},src/**/*.{js,jsx,ts,tsx,json,css,scss,md},test/**/*.{js,jsx,ts,tsx,json,css,scss,md}}",
-        "prettier:watch": "onchange {**/*.{js,jsx,ts,tsx,json,css,scss,md},src/**/*.{js,jsx,ts,tsx,json,css,scss,md},test/**/*.{js,jsx,ts,tsx,json,css,scss,md}} -- prettier --write {{changed}}"
+        "prettier": "prettier --write '{**/*.{js,jsx,ts,tsx,json,css,scss,md},src/**/*.{js,jsx,ts,tsx,json,css,scss,md},test/**/*.{js,jsx,ts,tsx,json,css,scss,md}}'",
+        "prettier:watch": "onchange '{**/*.{js,jsx,ts,tsx,json,css,scss,md},src/**/*.{js,jsx,ts,tsx,json,css,scss,md},test/**/*.{js,jsx,ts,tsx,json,css,scss,md}}' -- prettier --write {{changed}}"
     },
     "eslintConfig": {
         "extends": [
